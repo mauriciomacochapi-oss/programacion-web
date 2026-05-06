@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>formularios</title>
+    <title>Lasañas Maulli - Pedidos</title>
   </head>
   <body>
     <header>
@@ -11,12 +11,11 @@
       <p>Inicie su pedido online</p>
     </header>
     <main>
-      <!--formulario nos sirve para enviar datos-->
-      <form>
+      <!-- Le agregamos el action="#" para que al enviar se recargue la página y se limpie -->
+      <form action="#">
         <section>
           <h2>Datos de cliente</h2>
           <label for="nombre">Nombre</label>
-          <!--el type nos indica lo que podemos ingresar en el input-->
           <input type="text" id="nombre" name="nombre" />
           <label for="telefono">Telefono</label>
           <input type="tel" id="telefono" name="telefono" />
@@ -36,14 +35,14 @@
         <section>
           <h2>Ingredientes</h2>
 
-          <label for="ExtraQueso">ExtraQueso</label>
+          <label for="extraqueso">ExtraQueso</label>
           <input
             type="checkbox"
             id="extraqueso"
             name="ingrediente_extraqueso"
             value="extraqueso"
           />
-          <label for="Carnes">Carne</label>
+          <label for="carne">Carne</label>
           <input
             type="checkbox"
             id="carne"
@@ -68,9 +67,13 @@
           required
         ></textarea>
 
-        <!--siempre que haya un formulario vamos a tener un boton type submit-->
+        <br />
         <button type="submit">Enviar pedido</button>
       </form>
     </main>
+
+    <footer>
+      <p>© 2026 Lasañas Maulli - llame ahora!</p>
+    </footer>
   </body>
 </html>
