@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lasañas Maulli - Pedidos</title>
+    <style>
+      /* 1. RESET DE FORMULARIO */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        background-color: #fdf5e6; /* Un color crema tipo pasta */
+        padding: 20px;
+        color: #333;
+      }
+
+      header {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+
+      h1 {
+        color: #d32f2f; /* Rojo salsa */
+        text-transform: uppercase;
+      }
+
+      /* CONTENEDOR PRINCIPAL */
+      form {
+        max-width: 600px;
+        margin: 0 auto;
+        background: #fff;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      /* 2. FLEXBOX EN SECCIONES */
+      section {
+        display: flex;
+        flex-direction: column; /* Apila labels sobre inputs */
+        gap: 10px;
+        margin-bottom: 25px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid #eee;
+      }
+
+      h2,
+      h3 {
+        margin-bottom: 5px;
+        color: #5d4037;
+      }
+
+      /* 3. ESTILIZADO DE CAMPOS (Text, Email, Select, Textarea) */
+      label {
+        font-weight: 600;
+        font-size: 0.9rem;
+      }
+
+      input[type="text"],
+      input[type="tel"],
+      input[type="email"],
+      select,
+      textarea {
+        width: 100%;
+        padding: 12px;
+        border: 2px solid #ddd;
+        border-radius: 8px;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+      }
+
+      /* 4. :FOCUS VISIBLE (Reemplaza el outline) */
+      input:focus,
+      select:focus,
+      textarea:focus {
+        outline: none;
+        border-color: #d32f2f;
+        box-shadow: 0 0 8px rgba(211, 47, 47, 0.2);
+        background-color: #fffaf0;
+      }
+
+      /* ESTILO PARA RADIO Y CHECKBOX */
+      .opciones {
+        flex-direction: row; /* Pone el radio/check al lado del texto */
+        align-items: center;
+        gap: 15px;
+        flex-wrap: wrap;
+      }
+
+      input[type="radio"],
+      input[type="checkbox"] {
+        cursor: pointer;
+        width: 18px;
+        height: 18px;
+        accent-color: #d32f2f; /* Cambia el color del círculo/check */
+      }
+
+      /* 5. ESTILO DEL BOTÓN CON :HOVER */
+      button {
+        width: 100%;
+        background-color: #d32f2f;
+        color: white;
+        padding: 15px;
+        border: none;
+        border-radius: 8px;
+        font-size: 1.1rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s transform 0.2s;
+      }
+
+      button:hover {
+        background-color: #b71c1c;
+        transform: translateY(-2px); /* Efecto de levante */
+      }
+
+      button:active {
+        transform: translateY(0);
+      }
+
+      footer {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 0.8rem;
+        color: #777;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Las mejores lasañas Maulli</h1>
+      <p>Inicie su pedido online</p>
+    </header>
+
+    <main>
+      <form>
+        <section>
+          <h2>Datos de cliente</h2>
+          <label for="nombre">Nombre</label>
+          <input
+            type="text"
+            id="nombre"
+            name="nombre"
+            placeholder="Juan Pérez"
+            required
+          />
+
+          <label for="telefono">Teléfono</label>
+          <input
+            type="tel"
+            id="telefono"
+            name="telefono"
+            placeholder="11 2233-4455"
+          />
+
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="ejemplo@gmail.com"
+          />
+
+          <label for="direccion">Dirección</label>
+          <input type="text" id="direccion" name="direccion" />
+        </section>
+
+        <section>
+          <h3>Tamaño:</h3>
+          <div class="opciones">
+            <input type="radio" id="chica" name="tamaño" value="chica" />
+            <label for="chica">Chica</label>
+
+            <input type="radio" id="grande" name="tamaño" value="grande" />
+            <label for="grande">Grande</label>
+          </div>
+        </section>
+
+        <section>
+          <h2>Ingredientes Extra</h2>
+          <div class="opciones">
+            <input
+              type="checkbox"
+              id="extraqueso"
+              name="ingrediente_extraqueso"
+              value="extraqueso"
+            />
+            <label for="extraqueso">Extra Queso</label>
+
+            <input
+              type="checkbox"
+              id="carne"
+              name="ingrediente_carne"
+              value="carne"
+            />
+            <label for="carne">Carne</label>
+          </div>
+        </section>
+
+        <section>
+          <label for="pasta">Tipo de pasta</label>
+          <select id="pasta" name="pasta">
+            <option value="fresca al huevo">Fresca al huevo</option>
+            <option value="verde" selected>Verde</option>
+            <option value="integral">Integral</option>
+          </select>
+        </section>
+
+        <section>
+          <h2>Comentarios</h2>
+          <textarea
+            id="comentarios"
+            name="comentarios"
+            rows="4"
+            required
+            placeholder="¿Alguna aclaración?"
+          ></textarea>
+        </section>
+
+        <button type="submit">Enviar pedido 🍝</button>
+      </form>
+    </main>
+
+    <footer>
+      <p>© 2026 Lasañas Maulli - ¡Llame ahora!</p>
+    </footer>
+  </body>
+</html>
