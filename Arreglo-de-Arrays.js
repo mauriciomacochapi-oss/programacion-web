@@ -80,11 +80,24 @@ const conIVA = productos
 const nombres = productos
   .filter((p) => p.categoria === "Muebles")
   .map((p) => p.nombre);
-
+//--------ejercicio-5-----------
 const producto = productos.find(function(p) {
-  return p.id === 6;
+  return p.id === 5;
 });
 
+//console.log("holña",producto)
 
+if(producto.nombre === "Mouse Inalámbrico") {
+  console.log(`${producto.nombre} Encontrado`)
+} else {
+  console.log(`No encontrado`)
+};
+//---------------------//
+//
+//const unNombre = productos.find(function(p) {
+  //return p.id === 5;
+//});
 
-console.log(`${producto.nombre}| $${producto.precio}`);
+//console.log(`${unNombre.nombre}`)
+//console.log(`${producto.nombre}| $${producto.precio}`);
+
