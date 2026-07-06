@@ -64,40 +64,94 @@ const productos = [
     activo: true,
   },
 ];
-
-const soloNombres = productos.map(function (producto) {
-  return producto.nombre;
-});
+//-----------------//
+//const soloNombres = productos.map(function (producto) {
+//  return producto.nombre;
+//});
+//-----------------//
 //// Solo los productos de Electrónica, activos, con sus precios con IVA
-const conIVA = productos
-  .filter((p) => p.categoria === "Electrónica")
-  .filter((p) => p.activo)
-  .map((p) => ({
-    nombre: p.nombre,
-    precioFinal: `$${p.precio * 1.21}`,
-  }));
-
-const nombres = productos
-  .filter((p) => p.categoria === "Muebles")
-  .map((p) => p.nombre);
+//const conIVA = productos
+//  .filter((p) => p.categoria === "Electrónica")
+//  .filter((p) => p.activo)
+//  .map((p) => ({
+//    nombre: p.nombre,
+//    precioFinal: `$${p.precio * 1.21}`,
+//  }));
+///-------------///
+//const nombres = productos
+//  .filter((p) => p.categoria === "Muebles")
+//  .map((p) => p.nombre);
 //--------ejercicio-5-----------
-const producto = productos.find(function(p) {
-  return p.id === 5;
-});
+//const producto = productos.find(function(p) {
+//  return p.id === 5;
+//});
+//
+//console.log("hola",producto)
 
-//console.log("holña",producto)
-
-if(producto.nombre === "Mouse Inalámbrico") {
-  console.log(`${producto.nombre} Encontrado`)
-} else {
-  console.log(`No encontrado`)
-};
-//---------------------//
+//if(producto.nombre === "Mouse Inalámbrico") {
+//  console.log(`${producto.nombre} Encontrado`)
+//} else {
+//  console.log(`No encontrado`)
+//};
+//--------aca termina-------------//
 //
 //const unNombre = productos.find(function(p) {
-  //return p.id === 5;
+//return p.id === 5;
 //});
 
 //console.log(`${unNombre.nombre}`)
 //console.log(`${producto.nombre}| $${producto.precio}`);
+//--ej:6-----//
+//const conIVA = productos
+//  .filter((p) => p.categoria === "Electrónica")
+//  .filter((p) => p.activo === true)
+//  .filter((p) => p.stock > 0)
+//  .filter((p) => p.precio > 20000)
+//  .map((p) => ({
+//    nombre: p.nombre,
+//    precioFinal: `$${p.precio * 1.21}`,
+//    apellido: "Macochapi",
+//  }));
+//
+//console.log(conIVA);
+//--------aca termina-----------
+/*const todosActivos = productos
+  .filter((p) => p.precio > 100000)
+  .filter((p) => p.activo === true)
+  .filter(
+    (p) =>
+      p.stock > (0).filter((p) => p.categoria === "Electronica" || p.stock > 0),
+  );
+console.log(todosActivos);
+*/
+//..........
+//const productosElectronica = productos.every(
+//  (p) => p.nombre.includes("Electronica") && p.stock > 0,
+//);
+//...........
+//console.log(productosElectronica); // Respuesta pregunta 4 Ejercicio 6
+//const verificacion = productos.some((p) => p.precio > 1000000);
 
+//--------------
+//const id = productos.every((p) => p.id === true);
+//console.log(id);
+//--------------
+//const todosproductos = productos.every((p) => p.activo === true);
+//console.log(todosproductos);
+let activos = 0;
+const conIVA = productos
+  .filter((p) => p.categoria === "Electrónica")
+  .map((p) => {
+    if (p.activo) {
+      return (activos += 1);
+    }
+  })
+  .map((p) => ({
+    total: productos.length,
+    activos,
+    nombre: p.nombre,
+    precioFinal: `${p.precio * 1.21}`,
+    sinStock: p.stock,
+  }));
+
+console.log(conIVA);
