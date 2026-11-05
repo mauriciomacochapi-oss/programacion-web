@@ -123,7 +123,19 @@ const animes = [
 // Pista: usá innerHTML con un template literal (backticks + ${})
 // ─────────────────────────────────────────
 function crearCard(anime) {
+  const card = document.createElement("div");
+  card.classList.add("card");
 
+  card.innerHTML = `
+    <img src="${anime.imagen}" alt="${anime.titulo}">
+    <div class="card-info">
+      <span class="genero">${anime.genero}</span>
+      <h2>${anime.titulo}</h2>
+      <p>${anime.sinopsis}</p>
+      <span class="rating">★ ${anime.rating}</span>
+    </div>
+  `;
+  return card;
 }
 
 
@@ -137,7 +149,18 @@ function crearCard(anime) {
 //
 // Pista: usá forEach para recorrer el array
 // ─────────────────────────────────────────
-function renderGrilla(lista) {
+function renderGrilla(lista) { 
+  const grilla = document.querySelector("#grilla");
+  const contador = document.querySelector("#contador");
+
+  grilla.innerHTML = "";
+
+  lista.forEach(function(anime) {
+    const card = crearCard(anime);
+    grilla.appendChild(card);
+  });
+
+  contador.textContent = `${lista.length} animes encontrados`;
 
 }
 
@@ -149,7 +172,10 @@ function renderGrilla(lista) {
 //
 // Pista: usá filter + includes + toLowerCase
 // ─────────────────────────────────────────
-function buscar(lista, termino) {
+function buscar(lista, termino) { 
+    return lista.filter(function(anime) {
+    return anime.titulo.toLowerCase().includes(termino.toLowerCase());
+  });
 
 }
 
@@ -162,6 +188,13 @@ function buscar(lista, termino) {
 // Pista: usá filter
 // ─────────────────────────────────────────
 function filtrarPorGenero(lista, genero) {
+    if (genero === "") {
+    return lista;
+  }
+
+  return lista.filter(function(anime) {
+    return anime.genero === genero;
+  });
 
 }
 
@@ -178,6 +211,13 @@ function filtrarPorGenero(lista, genero) {
 // Esta función conecta los controles del HTML con la lógica de filtrado.
 // ─────────────────────────────────────────
 function buscarYFiltrar() {
+  const termino = document.querySelector("#busqueda").value;
+  const genero = document.querySelector("#genero").value;
+
+  let resultado = buscar(animes, termino);
+  resultado = filtrarPorGenero(resultado, genero);
+
+  renderGrilla(resultado);
 
 }
 
